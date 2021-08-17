@@ -1,0 +1,100 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto&display=swap");
+* {
+  margin: 0;
+  font-family: "Roboto", sans-serif;
+  background-color: antiquewhite;
+}
+
+.App {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.App h1 {
+  background-color: black;
+  color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 1em;
+}
+
+.students {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.card {
+  border: 1px solid black;
+  border-radius: 20px;
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  font-size: 1em;
+  font-weight: 500;
+}
+
+.showAll {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: none;
+  background-color: orange;
+  padding: 1em;
+  letter-spacing: 1px;
+  border-radius: 10px;
+  font-size: 1em;
+  font-weight: 600;
+  position: relative;
+  top: 2em;
+  left: 46%;
+  width: 8em;
+  cursor: pointer;
+  transition: transform 300ms ease-in-out;
+}
+
+.showAll:hover {
+  transform: scale(1.1);
+}
+
+.details {
+  border: none;
+  background-color: rgb(28, 40, 209);
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 1em;
+  font-weight: 500;
+  padding: 5px;
+  width: 10%;
+  position: relative;
+  left: 45%;
+  top: 1em;
+  color: white;
+}
+
+.Marks p {
+  font-weight: 600;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-left: 10px;
+}
+
+.Marks h2 {
+  position: relative;
+  text-align: center;
+}
+
+.totalMarks {
+  font-size: 1em;
+  font-weight: 600;
+  margin-top: 5px;
+}
+
+.Fail {
+  color: red;
+}
