@@ -8,6 +8,7 @@ export default function App() {
   const [topThree, setTopThree] = useState(3);
   const [heading, setHeading] = useState("Top 3 Students");
   const [details, setDetails] = useState(false);
+  const [position, setPosition] = useState(1);
 
   useEffect(() => {
     handleCalculations();
@@ -42,14 +43,14 @@ export default function App() {
         finalStuds.sort((a, b) =>
           a.name < b.totalMarks ? 1 : b.totalMarks < a.totalMarks ? -1 : 0
         );
-        console.log("sortable", finalStuds);
+        // console.log("sortable", finalStuds);
       });
       setFinalStudents(finalStuds);
     }
   };
 
   const showAllStudents = () => {
-    console.log("It is wokring", finalStudents);
+    // console.log("It is wokring", finalStudents);
     setTopThree(finalStudents.length);
     setHeading("All students By  ranking");
   };
@@ -66,10 +67,10 @@ export default function App() {
       <h1>{heading}</h1>
 
       {/* {details && <PopUp finalStudents={finalStudents} />} */}
-      {finalStudents.slice(0, topThree).map((items) => {
+      {finalStudents.slice(0, topThree).map((items, index) => {
         const { first, last } = items.name;
         const { id } = items;
-        console.log("final student marks", finalStudents);
+        // console.log("final student marks", finalStudents);
 
         return (
           <div key={id}>
@@ -80,21 +81,23 @@ export default function App() {
                 <h4>
                   {first} {last}
                 </h4>
+                <span className="Position">Position: {index + 1}</span>
                 <div className="Marks">
                   <h2> Marks</h2>
+
                   <p>
-                    {items.subjectMarks.map((j) => {
+                    {items.subjectMarks.map((marks) => {
                       return (
                         <div>
                           {details && (
                             <div>
                               {" "}
                               <p>
-                                {j.subject}:{" "}
-                                {j.marks < 17 ? (
-                                  <p className="Fail">Fail : {j.marks}</p>
+                                {marks.subject}:{" "}
+                                {marks.marks < 16.5 ? (
+                                  <p className="Fail">Fail : {marks.marks}</p>
                                 ) : (
-                                  j.marks
+                                  marks.marks
                                 )}
                               </p>
                             </div>
