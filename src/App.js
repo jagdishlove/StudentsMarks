@@ -64,6 +64,7 @@ export default function App() {
       setTopThree(3);
       setShow(true);
       setShowAll("Show All");
+      setHeading("Top 3 students");
     }
   };
 
