@@ -8,7 +8,11 @@ export default function App() {
   const [topThree, setTopThree] = useState(3);
   const [heading, setHeading] = useState("Top 3 Students");
   const [details, setDetails] = useState(false);
-  const [position, setPosition] = useState(1);
+  const [showAll, setShowAll] = useState("Show All");
+  const [showDetails, setShowDetails] = useState("Click to see details");
+
+  const [show, setShow] = useState(true);
+  const [showD, setShowD] = useState(true);
 
   useEffect(() => {
     handleCalculations();
@@ -49,18 +53,33 @@ export default function App() {
     }
   };
 
-  const showAllStudents = () => {
+  const showAllStudents = (text) => {
     // console.log("It is wokring", finalStudents);
-    setTopThree(finalStudents.length);
-    setHeading("All students By  ranking");
+    if (show) {
+      setTopThree(finalStudents.length);
+      setHeading("All students By  ranking");
+      setShow(false);
+      setShowAll(text);
+    } else {
+      setTopThree(3);
+      setShow(true);
+      setShowAll("Show All");
+    }
   };
 
-  const showAllSUbjectsMarks = () => {
+  const showAllSUbjectsMarks = (text) => {
     // finalStudents.map((item) => {
     //   console.log(item.subjectMarks)
-    // })
-
-    setDetails(!details);
+    // }
+    if (showD) {
+      setDetails(!details);
+      setShowD(false);
+      setShowDetails(text);
+    } else {
+      setShowD(true);
+      setDetails(!details);
+      setShowDetails("Click to see details");
+    }
   };
   return (
     <div className="App">
@@ -113,11 +132,14 @@ export default function App() {
           </div>
         );
       })}
-      <button onClick={showAllSUbjectsMarks} className="details">
-        Click here for details
+      <button
+        onClick={() => showAllSUbjectsMarks("Click To Hide")}
+        className="details"
+      >
+        {showDetails}
       </button>
-      <button onClick={showAllStudents} className="showAll">
-        Show All Rank
+      <button onClick={() => showAllStudents("Hide")} className="showAll">
+        {showAll}
       </button>
     </div>
   );
